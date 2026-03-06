@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import joblib
 import numpy as np
 from pydantic import BaseModel
+import os
 
 class CancerInput(BaseModel):
     radius_mean: float
@@ -38,7 +39,8 @@ class CancerInput(BaseModel):
     fractal_dimension_worst: float
 
 app = FastAPI()
-model = joblib.load(r'models\breast_cancer_model.pkl')
+model_path = os.path.join("models", "breast_cancer_model.pkl")
+model = joblib.load(model_path)
 
 @app.get("/")
 def health_check():
@@ -86,4 +88,5 @@ def predict(data : CancerInput):
   confidence = float(probability[0][1])
   result = "Malignant" if prediction[0] == 1 else "Benign"
   
+
   return {"prediction": result, "confidence": confidence}
