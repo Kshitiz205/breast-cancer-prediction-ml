@@ -2,8 +2,9 @@
 # Breast Cancer Prediction API (FastAPI + Machine Learning)
 
 ## Overview
-
+```
 Live API link (deployed on render) : https://breast-cancer-prediction-ml-3.onrender.com/docs
+```
 This project is a simple **machine learning API that predicts whether a breast tumor is Benign or Malignant** using features from the Breast Cancer dataset.
 
 The model is trained using **scikit-learn** and **XGBoost**, saved as a `.pkl` file, and served through a **FastAPI backend** so that predictions can be made through an API request.
